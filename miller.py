@@ -1,4 +1,5 @@
 from numpy import linspace, cos, arcsin, sin, pi
+import numpy as np
 import matplotlib.pyplot as plt
 
 def flux_surface(A = 2.2,
@@ -33,7 +34,7 @@ def flux_surface(A = 2.2,
     Z_s = kappa * r * sin(theta)
     return(R_s, Z_s)
 
-def plot_surface(R_s, Z_s, savefig=True):
+def plot_surface(R_s, Z_s, ax=None, savefig=True):
     """
     Plot Flux Surface
     
@@ -45,13 +46,23 @@ def plot_surface(R_s, Z_s, savefig=True):
         Z?
     
     """
-    plt.plot(R_s, Z_s)
-    plt.axis("equal")
-    plt.xlabel("R [m]")
-    plt.ylabel("Z [m]")
+    if ax is not None:
+        ax.plot(R_s, Z_s)
+        ax.axis("equal")
+        ax.set_xlabel("R [m]")
+        ax.set_ylabel("Z [m]")
+    else:
+        plt.plot(R_s, Z_s)
+        plt.axis("equal")
+        plt.xlabel("R [m]")
+        plt.ylabel("Z [m]")
 
     if savefig:
         plt.savefig("./miller.png")
+
+def area(r, z):
+    # abs because (r, z) start on the out-board midplace and r decreases
+    return np.abs(np.trapezoid(z, r))
 
 def main():
     """
@@ -59,6 +70,7 @@ def main():
     """
     R_s, Z_s = flux_surface()
     plot_surface(R_s, Z_s)
+    print("AREA=",area(R_s, Z_s))
 
 if __name__=="__main__":
     main()
