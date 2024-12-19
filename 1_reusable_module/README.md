@@ -64,7 +64,7 @@ directory to list files and patterns
 **Bonus:**
 
 - Install the `ruff` linter using `uv pip install ruff`
-- Run `ruff format` -- what has it changed?
+- Run `ruff format` -- what has it changed? - it has placed spaces before and after equals - `var=1.0` to `var = 1.0`
 - Run `ruff check` -- what are the issues? Fix them
 - Run these tools frequently!
 
