@@ -1,0 +1,7 @@
+[project]
+name = "miller"
+version = "0.1.0"
+dependencies = ["numpy", "matplotlib"]
+
+[project.optional-dependencies]
+test = ["pytest"]
