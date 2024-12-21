@@ -5,3 +5,6 @@ dependencies = ["numpy", "matplotlib"]
 
 [project.optional-dependencies]
 test = ["pytest"]
+
+[project.scripts]
+miller = "miller:main"
